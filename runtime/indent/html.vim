@@ -376,12 +376,12 @@ endfunc "}}}
 func! s:CheckCustomTag(ctag)
   "{{{
   " Returns 1 if ctag is the tag for a custom element, 0 otherwise.
-  " c:itag can be "tag" or "/tag" or "<!--" or "-->"
-  let pattern = "\\%\\(\\w\\+-\\)\\+\\w\\+"
+  " a:ctag can be "tag" or "/tag" or "<!--" or "-->"
+  let pattern = '\%\(\w\+-\)\+\w\+'
   if match(a:ctag, pattern) == -1
     return 0
   endif
-  if matchstr(a:ctag, "\\/\\ze.\\+") == "/"
+  if matchstr(a:ctag, '\/\ze.\+') == "/"
     " closing tag
     if s:block != 0
       " ignore ctag within a block
